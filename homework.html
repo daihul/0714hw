@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homework</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/homework.css">
+</head>
+<body>
+    <div id="app">
+        <a id="angleleft"><i class="fas fa-angle-left fa-5x"></i></a>
+        <img id="photo" src="./homework/a1.jpg" alt="">
+        <a id="angleright"><i class="fas fa-angle-right fa-5x"></i></a>
+        <h2 id="pagination">1/5</h2>
+    </div>
+
+    <script>
+        
+        var photo = document.getElementById('photo');
+        var angleleft = document.getElementById('angleleft');
+        var angleright = document.getElementById('angleright');
+        var pagination = document.getElementById('pagination');
+        var pageIdx = 0;
+        var img = [
+            "./homework/a1.jpg",
+            "./homework/a2.jpg",
+            "./homework/a3.jpg",
+            "./homework/a4.jpg",
+            "./homework/a5.jpg",
+        ];
+
+        angleright.addEventListener('click',function(){
+            pageIdx++;
+            if(pageIdx > 4){
+                pageIdx = 0
+            }
+            handImgChange();
+        })
+
+        angleleft.addEventListener('click',function(){
+            pageIdx--;
+            if(pageIdx < 0){
+                pageIdx = 4
+            }
+            handImgChange();
+        })
+        function handImgChange(){
+            photo.src = img[pageIdx];
+            pagination.innerText = (pageIdx + 1) + "/" + img.length;
+        }
+    </script>
+    
+</body>
+</html>
